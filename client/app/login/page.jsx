@@ -10,14 +10,13 @@ export default function () {
     return (
         <Container maxWidth="sm" className='mt-9'>
             <Paper elevation={10} className=" w-full py-8"  >
-                <h1 className='text-center text-4xl'>Регистрация</h1>
-                <form action="/api/users/reg" method="post" className='py-10'>
+                <h1 className='text-center text-4xl'>Вход</h1>
+                <form action="/api/users/log" method="post" className='py-10'>
                     <Stack spacing={2} className="min-w-max w-2/3 m-auto">
-                        <TextField label="Login" name="login" required/>
                         <TextField label="Email" name="email" type="email" required/>
                         <TextField label="Password" name="pass" type="password" required/>
-                        <Button type='submit' variant='outlined'>Зарегестрироваться</Button>
-                        <Link className='text-center' href="/login">Уже есть аккаунт?</Link>
+                        <Button type='submit' variant='outlined'>Войти</Button>
+                        <Link className='text-center' href="/reg">Нет аккаунта?</Link>
                     </Stack>
                 </form>
             </Paper>

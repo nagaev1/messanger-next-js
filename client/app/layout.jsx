@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <ThemeProvider theme={darkMode ? lightTheme : darkTheme}>
         <CssBaseline />
         <Nav onThemeClick={() => setDarkMode(!darkMode)} />
         {children}

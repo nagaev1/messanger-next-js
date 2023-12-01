@@ -8,9 +8,13 @@ router.get("/", (req, res) => {
     
 })
 
-router.post("/", (req, res) => {
-    res.send('hui')
-    userController.add()
+
+router.post("/reg", (req, res) => {
+    userController.add()    
+    res.redirect("/login")
+})
+
+router.post("/log", (req, res) => {
     res.redirect("/")
 })
 
