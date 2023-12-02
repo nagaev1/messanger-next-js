@@ -6,7 +6,7 @@ const { log } = require('console');
 exports.add = (req, res) => {
     username = req.body.login
     email = req.body.email
-    password = req.body.pass
+    password = req.body.pass.toString()
     hashHelper.scryptHash(password).then(hash => {
         userModel.add(username, email, hash).then(result => console.log('success'))
     })
@@ -15,7 +15,7 @@ exports.add = (req, res) => {
 
 exports.verify = (req, res) => {
     email = req.body.email
-    password = req.body.pass
+    password = req.body.pass.toString()
     userModel.getByEmail(email).then(result => {
         hashHelper.scryptVerify(password, result.password).then(bab => console.log(bab))
     })
