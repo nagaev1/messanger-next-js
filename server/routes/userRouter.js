@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 
 
 router.post("/reg", (req, res) => {
-    userController.add()    
+    userController.add(req)    
     res.redirect("/login")
 })
 
