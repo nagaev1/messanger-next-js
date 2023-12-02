@@ -18,9 +18,13 @@ exports.add = async function(username, email, pass) {
     }
 }
 
-exports.get = async function(body) {
+exports.getByEmail = async function(email) {
     try {
-
+        await mongoClient.connect();
+        const db = mongoClient.db("redditYopta");
+        const collection = db.collection("users");
+        const result = await collection.findOne({email: email})
+        return Promise.resolve(result);
     }catch(err) {
         throw(err)
     }
