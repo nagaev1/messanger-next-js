@@ -11,7 +11,7 @@ exports.add = async function(username, email, pass) {
         const db = mongoClient.db("redditYopta");
         const collection = db.collection("users");
         const data = {userName: username, email: email, password: pass};
-        const result = await collection.insertOne(data);
+        await collection.insertOne(data);
         return Promise.resolve('success');
     }catch(err) {
         throw(err)

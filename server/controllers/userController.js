@@ -6,17 +6,21 @@ const { log } = require('console');
 exports.add = (req, res) => {
     username = req.body.login
     email = req.body.email
-    password = req.body.pass.toString()
-    hashHelper.scryptHash(password).then(hash => {
-        userModel.add(username, email, hash).then(result => console.log('success'))
+    password = req.body.pass
+    hashHelper.scryptHash(password)
+        .then(hash => {userModel.add(username, email, hash)
+        .then(
+            result => res.status(201).send('fdfd'),
+            err => res.status(500).send(err)
+        )
     })
     
 }
 
 exports.verify = (req, res) => {
     email = req.body.email
-    password = req.body.pass.toString()
-    userModel.getByEmail(email).then(result => {
-        hashHelper.scryptVerify(password, result.password).then(bab => console.log(bab))
+    password = req.body.pass
+    userModel.getByEmail(email)
+    .then(result => {hashHelper.scryptVerify(password, result.password).then(bab => console.log(bab))
     })
 }
