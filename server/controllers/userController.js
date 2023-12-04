@@ -10,8 +10,8 @@ exports.add = (req, res) => {
     hashHelper.scryptHash(password)
         .then(hash => {userModel.add(username, email, hash)
         .then(
-            result => res.status(201).send('fdfd'),
-            err => res.status(500).send(err)
+            result => res.status(201).json({message: "success"}),
+            err => res.status(500).json({message: "server error"})
         )
     })
     
