@@ -16,7 +16,7 @@ router.post("/reg", (req, res) => {
 
 router.post("/log", (req, res) => {
     userController.verify(req, res);
-    res.redirect("/")
+    //res.redirect("/")
 })
 
 router.put("/", (req, res) => {

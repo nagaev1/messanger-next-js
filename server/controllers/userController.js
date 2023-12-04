@@ -7,13 +7,24 @@ exports.add = (req, res) => {
     username = req.body.login
     email = req.body.email
     password = req.body.pass
-    hashHelper.scryptHash(password)
-        .then(hash => {userModel.add(username, email, hash)
-        .then(
-            result => res.status(201).send('fdfd'),
-            err => res.status(500).send(err)
-        )
-    })
+    userModel.useCheck(email, username)
+        .then(result => {
+            if (result == "in use") {
+                res.status(403).send("email is already in use")
+                log('in use')
+            }else {
+                hashHelper.scryptHash(password)
+                .then(hash => {userModel.add(username, email, hash)
+                .then(
+                    result => {
+                        res.status(201).send('User created')
+                        log("created")
+                    }, err => res.status(500).send(err)
+                )
+                })
+            }
+        })
+    
     
 }
 

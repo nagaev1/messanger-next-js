@@ -30,6 +30,35 @@ exports.getByEmail = async function(email) {
     }
 }
 
+exports.getByUserName = async function(username) {
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db("redditYopta");
+        const collection = db.collection("users");
+        const result = await collection.findOne({userName: username})
+        return Promise.resolve(result);
+    }catch(err) {
+        throw(err)
+    }
+}
+
+exports.useCheck = async function (email, username) {
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db("redditYopta");
+        const collection = db.collection("users");
+        const resultLogin = await collection.findOne({userName: username})
+        const resultEmail = await collection.findOne({email: email})
+        console.log(resultEmail, resultLogin)
+        if (resultEmail != null || resultLogin != null) {
+            console.log("use123")
+            return Promise.resolve("in use")
+        }
+    }catch(err) {
+        throw(err)
+    }
+}
+
 exports.edit = async function(body) {
     try {
 
