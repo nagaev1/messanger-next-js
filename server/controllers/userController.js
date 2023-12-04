@@ -17,9 +17,9 @@ exports.add = (req, res) => {
                 .then(hash => {userModel.add(username, email, hash)
                 .then(
                     result => {
-                        res.status(201).send('User created')
+                        res.status(201).json({message: "success"})
                         log("created")
-                    }, err => res.status(500).send(err)
+                    }, err => res.status(500).json({message: "server error"})
                 )
                 })
             }
