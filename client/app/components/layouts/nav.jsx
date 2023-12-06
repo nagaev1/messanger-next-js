@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { useRouter } from 'next/navigation';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,6 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Nav(props) {
 
+  const { push } = useRouter();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -85,6 +88,7 @@ export default function Nav(props) {
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
+      className='mt-8'
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -99,14 +103,16 @@ export default function Nav(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => push("/reg")}>Зарегестрироваться</MenuItem>
+      <MenuItem onClick={() => push("/login")}>Войти</MenuItem>
+      <MenuItem onClick={() => push("/user/me")}>Профиль</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
+      className='mt-8'
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
         vertical: 'top',
