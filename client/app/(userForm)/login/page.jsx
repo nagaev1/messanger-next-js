@@ -3,12 +3,15 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
+import { useRouter } from 'next/navigation'
 
 import { useState } from 'react';
 
 import axios from 'axios';
 
 export default function () {
+    const router = useRouter()
+
     const [message, setMessage] = useState("")
 
     function handleSubmit(e) {
@@ -24,9 +27,7 @@ export default function () {
             .then(res => {
                 console.log(res.status);
                 if (res.status == 201)
-                    setMessage(
-                        <p className='text-center text-green-400 text-lg'>{res.data.message}</p>
-                    );
+                    router.push(`/user/ТутБудетНик`)  
                 else
                     setMessage(
                         <p className='text-center text-red-400 text-lg'>{res.data.message}</p>
@@ -45,11 +46,12 @@ export default function () {
         <div>
             <h1 className='text-center text-4xl'>Вход</h1>
             <form onSubmit={handleSubmit} className='py-10'>
-                <Stack spacing={2} className="min-w-max w-2/3 m-auto">
-                    <TextField label="Email" name="email" type="email" required/>
-                    <TextField label="Password" name="pass" type="password" required/>
+                <Stack spacing={2} className="min-w-max w-5/6 m-auto">
+                    <TextField label="Email или Login" name="email" autocomplete="email" required/>
+                    <TextField label="Password" name="pass" type="password" autocomplete="current-password" required/>
                     <Button type='submit' variant='outlined'>Войти</Button>
                     <Link className='text-center' href="/reg">Нет аккаунта?</Link>
+                    <Link className='text-center' href="/reset/request">Не помню пароль?</Link>
                     <div className='h-1'>{message}</div>
                 </Stack>
             </form>
