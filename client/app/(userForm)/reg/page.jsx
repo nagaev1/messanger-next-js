@@ -51,10 +51,10 @@ export default function () {
             <h1 className='text-center text-4xl'>Регистрация</h1>
             <form onSubmit={handleSubmit} className='py-10'>
                 <Stack spacing={2} className="min-w-max w-5/6 m-auto">
-                    <TextField label="Email" name="email" type="email" autocomplete="email" required/>
-                    <TextField label="Login" name="login" autocomplete="username" required/>
-                    <TextField label="User name" name="name" autocomplete="nickname" required/>
-                    <TextField label="Password" name='pass' id="pass" type="password"  autocomplete="current-password" required/>
+                    <TextField label="Email" name="email" type="email" autoComplete="email" required/>
+                    <TextField label="Login" name="login" autoComplete="username" required/>
+                    <TextField label="User name" name="name" autoComplete="nickname" required/>
+                    <TextField label="Password" name='pass' id="pass" type="password"  autoComplete="current-password" required/>
                     <Button type='submit' variant='outlined'>Зарегестрироваться</Button>
                     <Link className='text-center' href="/login">Уже есть аккаунт?</Link>
                     <div className='h-3'>{message}</div>

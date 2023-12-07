@@ -30,7 +30,7 @@ export default function (props) {
                 </div>
             </Paper>
             <Paper className="mt-2 p-2">
-                <Paper className='rounded-none h-40 flex justify-center items-center '>
+                <Paper square={false} className='h-40 flex justify-center items-center '>
                     <div className='text-3xl'>No posts</div>
                 </Paper>
             </Paper>

@@ -47,8 +47,8 @@ export default function () {
             <h1 className='text-center text-4xl'>Вход</h1>
             <form onSubmit={handleSubmit} className='py-10'>
                 <Stack spacing={2} className="min-w-max w-5/6 m-auto">
-                    <TextField label="Email или Login" name="email" autocomplete="email" required/>
-                    <TextField label="Password" name="pass" type="password" autocomplete="current-password" required/>
+                    <TextField label="Email или Login" name="email" autoComplete="email" required/>
+                    <TextField label="Password" name="pass" type="password" autoComplete="current-password" required/>
                     <Button type='submit' variant='outlined'>Войти</Button>
                     <Link className='text-center' href="/reg">Нет аккаунта?</Link>
                     <Link className='text-center' href="/reset/request">Не помню пароль?</Link>
