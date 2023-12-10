@@ -1,4 +1,4 @@
-import { IconButton, Avatar, Typography, Button, Link, ButtonGroup  } from "@mui/material"
+import { IconButton, Avatar, Typography, Button, Link, ButtonGroup, MobileStepper   } from "@mui/material"
 import {Card, CardHeader, CardMedia, CardContent, CardActions} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -6,11 +6,34 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import CommentIcon from '@mui/icons-material/Comment';
 import ReplyIcon from '@mui/icons-material/Reply';
 
+import PostButtons from "./postButtons";
 
 
 
 
 export default function Post (props) {
+
+
+
+    function createMedia () {
+        if (!props.media)
+            return
+        if (props.media.constructor === Array) {
+            return (
+                <p>Array</p>
+            )
+        }
+        else {
+            return (
+                <CardMedia
+                    component={props.media.component}
+                    image={props.media.src}
+                    autoPlay
+                    controls
+                />
+            )
+        }
+    }
 
 
     return (
@@ -29,42 +52,24 @@ export default function Post (props) {
                 }
                 title={
                     <Link href="/user/me" color="text.primary" underline="none">
-                        name
+                        {props.name}
                     </Link>
                 }
-                subheader="34 минуты назад"
+                subheader={props.date}
             />
             
             <CardContent >
                 <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like. .....
+                    {props.text}
                 </Typography>
             </CardContent>
 
-            <Link href="#">
-                <CardMedia
-                    component="img"
-                    height="194"
-                    image="/cat.gif"
-                    alt="Paella dish"
-                />
-            </Link>
+            
+            {createMedia()}
+            
 
             <CardActions className="flex justify-between">
-                <ButtonGroup size="" variant="text">
-                    <Button startIcon={<ThumbUpAltIcon />}>
-                        12 m.
-                    </Button>
-                    <Button startIcon={<ThumbDownAltIcon />}>
-                        34 k.
-                    </Button>
-                    <Button size="small" startIcon={<CommentIcon />}>
-                        48 k.
-                    </Button>
-                </ButtonGroup>
-
+                <PostButtons/>
                 <IconButton color="primary">
                     <ReplyIcon/>
                 </IconButton>
