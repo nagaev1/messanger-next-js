@@ -107,7 +107,7 @@ export default function Nav(props) {
     >
       <MenuItem onClick={() => push("/reg")}>Зарегестрироваться</MenuItem>
       <MenuItem onClick={() => push("/login")}>Войти</MenuItem>
-      <MenuItem onClick={() => push("/user/me")}>Профиль</MenuItem>
+      <MenuItem onClick={() => push("/u/me")}>Профиль</MenuItem>
     </Menu>
   );
 

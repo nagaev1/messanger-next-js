@@ -8,6 +8,7 @@ import Nav from './components/layouts/nav';
 
 import {ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
 import darkTheme from './themes/darkTheme';
 import lightTheme from './themes/lightTheme';
 

@@ -1,12 +1,10 @@
-import { IconButton, Avatar, Typography, Button, Link, ButtonGroup, MobileStepper   } from "@mui/material"
+import { IconButton, Avatar, Typography, Button, Link, ButtonGroup, MobileStepper, Chip   } from "@mui/material"
 import {Card, CardHeader, CardMedia, CardContent, CardActions} from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import CommentIcon from '@mui/icons-material/Comment';
 import ReplyIcon from '@mui/icons-material/Reply';
 
 import PostButtons from "./postButtons";
+import PostMedia from "./postMedia";
 
 
 
@@ -37,11 +35,13 @@ export default function Post (props) {
 
 
     return (
+
         <Card>
+
 
             <CardHeader
                 avatar={
-                    <Link href="/user/me">
+                    <Link href={props.url}>
                         <Avatar />
                     </Link>
                 }
@@ -51,21 +51,33 @@ export default function Post (props) {
                     </IconButton>
                 }
                 title={
-                    <Link href="/user/me" color="text.primary" underline="none">
+                    <Link href="/u/me" color="text.primary" underline="none">
                         {props.name}
                     </Link>
                 }
                 subheader={props.date}
             />
-            
-            <CardContent >
-                <Typography variant="body2" color="text.secondary">
-                    {props.text}
-                </Typography>
-            </CardContent>
 
+            <Link href={props.url} underline={props.url ? "hover" : "none"}>
+                <CardContent >
+                    <Typography variant="h5"  color="text.secondary">
+                        {props.title}
+                    
+                    </Typography>
+                    <Chip label={props.type} className="mx-auto" color="info" size="small" href="#" clickable />
+                </CardContent>
+
+                <CardContent >
+                    <Typography variant="body2" color="text.secondary">
+                        {props.text.length >= 300 ?
+                            props.text.slice(0, 300) + "..."
+                            : props.text
+                        }
+                    </Typography>
+                </CardContent>  
+            </Link>
             
-            {createMedia()}
+            <PostMedia media={props.media} />
             
 
             <CardActions className="flex justify-between">
