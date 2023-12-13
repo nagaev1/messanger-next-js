@@ -5,6 +5,7 @@ import './globals.css'
 import { useState, useEffect } from 'react';
 
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import Nav from './components/layouts/nav';
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
         <Nav onThemeClick={() => setDarkMode(!darkMode)} />
         {children}
         <Analytics />
+        <SpeedInsights />
         </ThemeProvider>
         
       </body>
